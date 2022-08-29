@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    tools:context=".PlayerActivity">
+    
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        
+        <com.google.android.material.tabs.TabItem
+            android:text="Musicas"/>
+        
+        <com.google.android.material.tabs.TabItem
+            android:text="Playlists"/>
+        
+    
+    </com.google.android.material.tabs.TabLayout>
+    
+    <androidx.viewpager2.widget.ViewPager2
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager"
+        android:layout_below="@id/tablayout"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"/>
+    
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.MaterialComponents.BottomSheet.Modal"
+            android:id="@+id/bottomSheet"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="12dp"
+            app:behavior_peekHeight="86dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="8dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                
+            	<SeekBar
+       			 android:id="@+id/pgbProgress"
+       			 android:layout_height="15dp"
+       			 android:layout_width="match_parent"/>
+    
+   		 	<ImageView
+      		 	 android:id="@+id/musicLogoSheet"
+      			  android:layout_below="@id/pgbProgress"
+     		 	  android:layout_height="60dp"
+       			 android:layout_width="45dp"
+        			android:scaleType="centerInside"
+     		  	 android:src="@drawable/music_icon"/>
+    
+    			<TextView
+                    android:id="@+id/musicTitle"
+       			 android:layout_height="wrap_content"
+       			 android:layout_marginTop="8dp"
+      	 		 android:layout_toRightOf="@id/musicLogoSheet"
+      		 	 android:layout_width="wrap_content"
+      		 	 android:padding="4dp"
+        			android:text="Impossible I'm king"
+        			android:textColor="#FFFFFF"/>
+                    
+                <TextView
+       			 android:id="@+id/musicArtist"
+       			 android:layout_below="@id/musicTitle"
+        			android:layout_height="wrap_content"
+        			android:layout_marginLeft="8dp"
+       			 android:layout_toRightOf="@id/musicLogoSheet"
+      			  android:layout_width="wrap_content"
+      			  android:text="(Nenhum artist encontrado)"
+       			 android:textColor="#fff4ffff"
+      			  android:textSize="10dp"/>    
+    
+    			<ImageView
+                    android:id="@+id/btnPlay"
+      			  android:layout_alignParentEnd="true"
+       			 android:layout_centerInParent="true"
+     			   android:layout_height="60dp"
+       			 android:layout_margin="8dp"
+       			 android:layout_width="35dp"
+     			   android:src="@drawable/play_music_icon_1"/>
+            
+       	 </RelativeLayout>
+            
+        </com.google.android.material.card.MaterialCardView>
+    
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>

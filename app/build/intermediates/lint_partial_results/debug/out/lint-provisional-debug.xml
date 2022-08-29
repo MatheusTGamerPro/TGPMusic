@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 7.2.1" type="conditional_incidents">
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_toRightOf` with `android:layout_toEndOf=&quot;@id/musicLogo&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_toEndOf=&quot;@id/musicLogo&quot;"
+            oldString="layout_toRightOf"
+            replacement="layout_toEndOf"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/layout_music_list.xml"
+            line="27"
+            column="13"
+            startOffset="968"
+            endLine="27"
+            endColumn="37"
+            endOffset="992"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="RtlHardcoded"
+        severity="warning"
+        message="Consider replacing `android:layout_toRightOf` with `android:layout_toEndOf=&quot;@id/musicLogo&quot;` to better support right-to-left layouts">
+        <fix-replace
+            description="Replace with android:layout_toEndOf=&quot;@id/musicLogo&quot;"
+            oldString="layout_toRightOf"
+            replacement="layout_toEndOf"/>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/layout/layout_music_list.xml"
+            line="37"
+            column="13"
+            startOffset="1367"
+            endLine="37"
+            endColumn="37"
+            endOffset="1391"/>
+        <map>
+            <entry
+                name="applies"
+                int="10"/>
+        </map>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; SDK_INT is always >= 21">
+        <fix-replace
+            description="Delete tools:targetApi"
+            replacement="">
+            <range
+                file="${:app*debug*sourceProvider*0*resDir*0}/values/themes.xml"
+                startOffset="711"
+                endOffset="730"/>
+        </fix-replace>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/values/themes.xml"
+            line="13"
+            column="45"
+            startOffset="711"
+            endLine="13"
+            endColumn="64"
+            endOffset="730"/>
+        <map>
+            <condition minGE="21"/>
+        </map>
+    </incident>
+
+    <incident
+        id="ObsoleteSdkInt"
+        severity="warning"
+        message="Unnecessary; SDK_INT is always >= 21">
+        <fix-replace
+            description="Delete tools:targetApi"
+            replacement="">
+            <range
+                file="${:app*debug*sourceProvider*0*resDir*0}/values-night/themes.xml"
+                startOffset="711"
+                endOffset="730"/>
+        </fix-replace>
+        <location
+            file="${:app*debug*sourceProvider*0*resDir*0}/values-night/themes.xml"
+            line="13"
+            column="45"
+            startOffset="711"
+            endLine="13"
+            endColumn="64"
+            endOffset="730"/>
+        <map>
+            <condition minGE="21"/>
+        </map>
+    </incident>
+
+</incidents>

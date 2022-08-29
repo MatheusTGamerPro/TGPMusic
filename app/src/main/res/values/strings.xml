@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TGPMusic</string>
+    <string name="app_version">1.0</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="add">Adicionar</string>
+</resources>
