@@ -54,49 +54,49 @@
                 android:layout_height="wrap_content">
                 
             	<SeekBar
-       			 android:id="@+id/pgbProgress"
-       			 android:layout_height="15dp"
-       			 android:layout_width="match_parent"/>
+       	            android:id="@+id/pgbProgress"
+       		    android:layout_height="15dp"
+       		    android:layout_width="match_parent"/>
     
-   		 	<ImageView
-      		 	 android:id="@+id/musicLogoSheet"
-      			  android:layout_below="@id/pgbProgress"
-     		 	  android:layout_height="60dp"
-       			 android:layout_width="45dp"
-        			android:scaleType="centerInside"
-     		  	 android:src="@drawable/music_icon"/>
+   		    <ImageView
+      		        android:id="@+id/musicLogoSheet"
+      		        android:layout_below="@id/pgbProgress"
+     		        android:layout_height="60dp"
+       		        android:layout_width="45dp"
+                        android:scaleType="centerInside"
+     		  	android:src="@drawable/music_icon"/>
     
-    			<TextView
-                    android:id="@+id/musicTitle"
-       			 android:layout_height="wrap_content"
-       			 android:layout_marginTop="8dp"
-      	 		 android:layout_toRightOf="@id/musicLogoSheet"
-      		 	 android:layout_width="wrap_content"
-      		 	 android:padding="4dp"
-        			android:text="Impossible I'm king"
-        			android:textColor="#FFFFFF"/>
+    	            <TextView
+                        android:id="@+id/musicTitle"
+       			android:layout_height="wrap_content"
+       		        android:layout_marginTop="8dp"
+      	 	        android:layout_toRightOf="@id/musicLogoSheet"
+      		        android:layout_width="wrap_content"
+      		        android:padding="4dp"
+                        android:text="Nenhuma Música Selecionada"
+                        android:textColor="#FFFFFF"/>
                     
-                <TextView
-       			 android:id="@+id/musicArtist"
-       			 android:layout_below="@id/musicTitle"
-        			android:layout_height="wrap_content"
-        			android:layout_marginLeft="8dp"
-       			 android:layout_toRightOf="@id/musicLogoSheet"
-      			  android:layout_width="wrap_content"
-      			  android:text="(Nenhum artist encontrado)"
-       			 android:textColor="#fff4ffff"
-      			  android:textSize="10dp"/>    
+                    <TextView
+       		        android:id="@+id/musicArtist"
+       		        android:layout_below="@id/musicTitle"
+        		android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+       			android:layout_toRightOf="@id/musicLogoSheet"
+      		        android:layout_width="wrap_content"
+      			android:text="Artista Desconhecido"
+       			android:textColor="#fff4ffff"
+      		        android:textSize="10dp"/>    
     
-    			<ImageView
-                    android:id="@+id/btnPlay"
-      			  android:layout_alignParentEnd="true"
-       			 android:layout_centerInParent="true"
-     			   android:layout_height="60dp"
-       			 android:layout_margin="8dp"
-       			 android:layout_width="35dp"
-     			   android:src="@drawable/play_music_icon_1"/>
+    	            <ImageView
+                        android:id="@+id/btnPlay"
+      		        android:layout_alignParentEnd="true"
+       		        android:layout_centerInParent="true"
+     		        android:layout_height="60dp"
+       		        android:layout_margin="8dp"
+       			android:layout_width="35dp"
+     		        android:src="@drawable/play_music_icon_1"/>
             
-       	 </RelativeLayout>
+       	   </RelativeLayout>
             
         </com.google.android.material.card.MaterialCardView>
     
