@@ -1,0 +1,26 @@
+name: Android-Debug-Compilation
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: set up JDK 11 (Java)
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build APK Debug
+        uses: eskatos/gradle-command-action@v2
+        with:
+          arguments: clean build --stacktrace
