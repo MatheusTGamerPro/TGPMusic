@@ -62,7 +62,6 @@ import com.matheustgp.tgpmusic.adapters.MusicListAdapter;
 import com.matheustgp.tgpmusic.fragments.MusicListFragment;
 import com.matheustgp.tgpmusic.fragments.MusicsFragment;
 import com.matheustgp.tgpmusic.fragments.PlaylistFragment;
-import com.matheustgp.tgpmusic.MediaService;
 
 import com.matheustgp.tgpmusic.media.MusicPlayer;
 import java.io.File;
