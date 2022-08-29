@@ -1,4 +1,0 @@
-#Sat Aug 27 00:03:48 GMT 2022
-base.0=/storage/emulated/0/AndroidIDEProjects/TGPMusic/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
