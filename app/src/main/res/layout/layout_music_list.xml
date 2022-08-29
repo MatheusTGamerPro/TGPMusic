@@ -17,7 +17,6 @@
         
         <ImageView
             android:id="@+id/musicLogoSheet"
-            android:layout_below="@id/pgbProgress"
             android:layout_height="60dp"
             android:layout_width="45dp"
             android:scaleType="centerInside"
