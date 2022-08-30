@@ -19,11 +19,9 @@
 package com.matheustgp.tgpmusic;
 
 import android.app.Activity;
-import android.app.Notification;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.BitmapFactory;
-import android.media.MediaPlayer;
 import android.media.MediaSession2;
 import android.net.Uri;
 import android.os.Bundle;
@@ -39,14 +37,16 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.tabs.TabLayout;
 import com.google.android.exoplayer2.ExoPlaybackException;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.MediaItem;
@@ -54,16 +54,14 @@ import com.google.android.exoplayer2.MediaMetadata;
 import com.google.android.exoplayer2.Player;
 import com.google.android.exoplayer2.Player.Events;
 import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.android.material.tabs.TabLayout;
 import com.matheustgp.tgpmusic.R;
 import com.matheustgp.tgpmusic.adapters.MusicList;
 import com.matheustgp.tgpmusic.adapters.MusicListAdapter;
 import com.matheustgp.tgpmusic.fragments.MusicListFragment;
 import com.matheustgp.tgpmusic.fragments.MusicsFragment;
 import com.matheustgp.tgpmusic.fragments.PlaylistFragment;
-
 import com.matheustgp.tgpmusic.media.MusicPlayer;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,26 +69,23 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class PlayerActivity extends AppCompatActivity {
+   
+    public static  int REQ_CD_AUDIOFILE = 101;
     
-    // Constantes
-    public final int REQ_CD_AUDIOFILE = 101;
-    
-    // Views e Widgets
+    // Views
     private TabLayout tab;
     private View bottomSheet;
     private ViewPager2 viewPager;
     private RecyclerView recyclerView;
-    private ImageView imgAlbum;
-    private ImageView imgPlay;
-    private TextView txtTitle;
-    private TextView txtArtist;
-    private SeekBar pgb;
+    private ImageView imageViewAlbum;
+    private ImageView imageViewPlay;
+    private TextView textViewTitle;
+    private TextView textViewArtist;
+    private SeekBar seekControl;
     private BottomSheetBehavior bottomSheetBehavior;
-    
-    // Lista de Musicas
+   
     public List<MusicList> musics = new ArrayList<MusicList>();
     
-    // Variaveis de Classes
     private Timer timer = new Timer();
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private MusicListFragment musicsFragment;
@@ -108,18 +103,18 @@ public class PlayerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_player);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         
-        // Referenciar todos as Views e Widgets
+        // Configure IDs
         tab = findViewById(R.id.tablayout);
         viewPager = findViewById(R.id.pager);
+        textViewTitle = findViewById(R.id.musicTitle);
+        textViewArtist = findViewById(R.id.musicArtist);
+        imageViewAlbum = findViewById(R.id.musicLogoSheet);
+        imageViewPlay = findViewById(R.id.btnPlay);
+        seekControl = findViewById(R.id.pgbProgress);
         bottomSheet = findViewById(R.id.bottomSheet);
-        txtTitle = findViewById(R.id.musicTitle);
-        txtArtist = findViewById(R.id.musicArtist);
-        imgAlbum = findViewById(R.id.musicLogoSheet);
-        imgPlay = findViewById(R.id.btnPlay);
-        pgb = findViewById(R.id.pgbProgress);
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
         
-        // configura o ViewPager e RecyclerView
+        // Setup all adapters
         setupAdapters();
         
         mediaSession = new MediaSessionCompat(this, getPackageName());
@@ -137,7 +132,7 @@ public class PlayerActivity extends AppCompatActivity {
 							runOnUiThread(new Runnable() {
 								@Override
 								public void run() {
-                   				 pgb.setProgress(player.getPosition());
+                   				 seekControl.setProgress(player.getPosition());
                				 }
                			 });
           		 	 }
@@ -155,22 +150,24 @@ public class PlayerActivity extends AppCompatActivity {
             }
             
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {}
+            public void onTabReselected(TabLayout.Tab mTab) { } 
             
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {}
+            public void onTabUnselected(TabLayout.Tab  mTab) { }
         });
         
-        imgPlay.setOnClickListener(new View.OnClickListener() {
+        imageViewPlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                player.createNewMusic(musics, recyclerAdapter.getMusicSelected());
-                player.playMusic();
-                
+                if (player.getPlayer().isPlaying()) {
+                	player.pauseMusic();
+                } else {
+                	player.playMusic();
+                }
             }
         });
         
-        pgb.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        seekControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seeekBar, int value, boolean param3) {
                 
@@ -187,11 +184,11 @@ public class PlayerActivity extends AppCompatActivity {
 			}
         });
     }
-    
+
     // Função para configurar os novos adaptadores
     public void setupAdapters() {
         musics = new MusicList().createMusicList();
-        player = new MusicPlayer(getApplicationContext(), txtTitle, txtArtist, imgAlbum, pgb);
+        player = new MusicPlayer(getApplicationContext(), textViewTitle, textViewArtist, imageViewAlbum, seekControl);
         player.setupPlayer();
         
         musicsFragment = new MusicListFragment();
