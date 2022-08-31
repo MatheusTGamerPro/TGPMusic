@@ -1,5 +1,5 @@
 <p align="center">
-    <img width="180" src="/app/src/main/res/drawable/app_icon_purple.png"></img>
+    <img width="180" src="/.github/icon_rounded.png"></img>
 </p>
 
 <h1 align="center">TGPMusic</h1>
