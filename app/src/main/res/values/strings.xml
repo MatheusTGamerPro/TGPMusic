@@ -4,4 +4,20 @@
     <string name="yes">Sim</string>
     <string name="no">Não</string>
     <string name="add">Adicionar</string>
+    
+    <!-- player strings -->
+    <string name="unknown_artist">Artista Desconhecido</string>
+    <string name="play">Tocar</string>
+    <string name="pause">Pausar</string>
+    
+    <!-- activity_player strings -->
+    <string name="tab_item_musics">Musicas</string>
+    <string name="tab_item_player">Player</string>
+    <string name="tab_item_playlist">Playlist</string>
+    <string name="music_title_default">Adicionar</string>
+    
+    <!-- Notification -->
+    <string name="channel_id">Music Notification</string>
+    <string name="notification_description">Player Notification Control</string>
+    
 </resources>
